@@ -2,7 +2,7 @@ let souvenirsList = [];
 
 const addSouvenirName = () => prompt("Ingrese el souvenir");
 const addSouvenirCost = () => Number(prompt("Ingrese el valor del souvenir"));
-const addSouvenirDisponibility = () => confirm("Ingrese disponibilidad del souvenir (true/false)");
+const addSouvenirDisponibility = () => confirm("Ingrese disponibilidad del souvenir (aceptar/cancelar)");
 
 // verificacion de tipo de datos ingresados
 const verifySouvenirName = (name) => {
@@ -18,9 +18,6 @@ const verifySouvenirDisponibility = (disponibility) => {
   console.log(typeof disponibility);
 };
 
-// agregar datos a la lista de souvenirs
-const souvenirsList.push = (name,cost,disponibility) 
-
 function main() {
   let name = addSouvenirName();
   let cost = addSouvenirCost();
@@ -28,6 +25,7 @@ function main() {
   verifySouvenirName(name);
   verifySouvenirCost(cost);
   verifySouvenirDisponibility(disponibility);
+  addSouvenirToList(name, cost, disponibility);
 }
 
 main();
