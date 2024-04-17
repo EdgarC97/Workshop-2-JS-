@@ -1,25 +1,33 @@
-let souvenirs = [];
+let souvenirsList = [];
 
-function addSouvenir() {
-  const souvenirName = prompt("Ingrese el souvenir");
-  const souvenirCost = Number(prompt("Ingrese el valor del souvenir"));
-  if (isNaN(souvenirCost)) {
+const addSouvenirName = () => prompt("Ingrese el souvenir");
+const addSouvenirCost = () => Number(prompt("Ingrese el valor del souvenir"));
+const addSouvenirDisponibility = () => confirm("Ingrese disponibilidad del souvenir (true/false)");
+
+// verificacion de tipo de datos ingresados
+const verifySouvenirName = (name) => {
+  console.log(typeof name);
+};
+const verifySouvenirCost = (cost) => {
+  console.log(typeof cost);
+  if (isNaN(cost)) {
     console.error("Error: El costo del souvenir debe ser un número.");
-    return;
   }
-  let souvenirDisponibility = prompt(
-    "Ingrese disponibilidad del souvenir (true/false)");
+};
+const verifySouvenirDisponibility = (disponibility) => {
+  console.log(typeof disponibility);
+};
 
-  // verificacion de tipo de datos ingresados
-  console.log(typeof souvenirName);
-  console.log(typeof souvenirCost);
-  console.log(typeof souvenirDisponibility);
+// agregar datos a la lista de souvenirs
+const souvenirsList.push = (name,cost,disponibility) 
 
-  // guardar datos ingresados por usuario como un objeto
-  let souvenir = {
-    name: souvenirName,
-    cost: souvenirCost,
-    disponibility: souvenirDisponibility,
-  };
+function main() {
+  let name = addSouvenirName();
+  let cost = addSouvenirCost();
+  let disponibility = addSouvenirDisponibility();
+  verifySouvenirName(name);
+  verifySouvenirCost(cost);
+  verifySouvenirDisponibility(disponibility);
 }
-addSouvenir();
+
+main();
