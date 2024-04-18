@@ -6,8 +6,8 @@ const articuloExtra = 200
 
 //Funcion donde se le solicitan al usuario los datos como presupuesto y gastos basicos 
 const inicialPresupuest = () => {
-    presupuest = parseInt(prompt("Ingrese el presupuesto inicial"));
-    costoViaje = parseInt(prompt("Ingrese el costo estimado de gastos basicos"));
+    presupuest = Number(prompt("Ingrese el presupuesto inicial"));
+    costoViaje = Number(prompt("Ingrese el costo estimado de gastos basicos"));
 }
 //Funcion  con condicionales para calcular los gastos de Julian
 const calculoGastos = () => {

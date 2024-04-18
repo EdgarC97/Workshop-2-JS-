@@ -1,5 +1,5 @@
 // Lista de souvenirs potenciales vacia
-let souvenirsList = [];
+const souvenirsList = [];
 
 // Funciones para solicitar al usuario datos de entrada
 const addSouvenirName = () => prompt("Ingrese el souvenir");
