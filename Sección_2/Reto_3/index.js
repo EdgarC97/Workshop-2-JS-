@@ -59,7 +59,7 @@ function main() {
     }
   }
 // Condicionales con el espacio
-  if (space)
+  // if (space)
 
 // Condicionales con el peso
 }

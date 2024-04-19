@@ -1,7 +1,7 @@
 // Funciones que piden al usuario el ingreso de los datos
-const addDailyPresupuest = () => parseInt(prompt("Ingrese su presupuesto diario"));
-const addDailyActivities = () => parseInt(prompt("Ingrese costos estimados de actividades como comer fuera y comprar libros"));
-const addDailySaving = () => parseInt(prompt("Ingrese el valor de ahorro diario que le gustaría alcanzar"));
+const addDailyPresupuest = () => Number(prompt("Ingrese su presupuesto diario"));
+const addDailyActivities = () => Number(prompt("Ingrese costos estimados de actividades como comer fuera y comprar libros"));
+const addDailySaving = () => Number(prompt("Ingrese el valor de ahorro diario que le gustaría alcanzar"));
 
 // Funcion principal que reune en variables cada dato ingresado por el usuario en las funciones anteriores
 function main (){

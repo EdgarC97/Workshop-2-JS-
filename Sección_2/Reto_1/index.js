@@ -7,9 +7,12 @@ Falsy values are values that are considered false when encountered in a Boolean 
 */
 
 // Se definen variable Truthy o Falsey
-let nivelEnergia = 1; 
-let clima = ""; 
-let cargaTrabajo = 0; 
+alert("Bienvenido a la evaluacion de Julian")
+alert("Para las siguientes preguntas considera 1: Si y 0: No")
+
+let nivelEnergia = Number(prompt("¿Tienes suficiente energia hoy? (1 o 0)")); 
+let clima = prompt("Ingrese el estado del clima (deja en blanco para mal clima) "); 
+let cargaTrabajo = Number(prompt("¿Tienes carga laboral hoy? (1 o 0)")); 
 
 // Se define la logica a implementar con estas variables
 
@@ -19,6 +22,8 @@ if (nivelEnergia && clima && cargaTrabajo) {
     console.log("Julian decide salir a correr.");
 } else if (nivelEnergia && cargaTrabajo) {
     console.log("Julian decide quedarse en casa trabajando en proyectos personales.");
+} else if (!nivelEnergia && cargaTrabajo) {
+    console.log("Julian decide quedarse en casa trabajando en proyectos con flojera.");
 } else if (nivelEnergia) {
     console.log("Julian decide hacer tareas menores en casa.");
 } else {
