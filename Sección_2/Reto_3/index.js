@@ -1,68 +1,92 @@
-// Lista de suitcase vacia
-const suitcase = [];
+function decisionesUltimaHora(clima, espacio, peso) {
+  let articulos = [];
+  // flag = true;
+  // let articulosAdicionales = {
+  //   libro: { espacio: 2, peso: 1 },
+  //   'botella de agua': { espacio: 1, peso: 1 },
+  //   snacks: { espacio: 1, peso: 0.5 },
+  //   manta: { espacio: 3, peso: 1.5 },
+  //   almohada: { espacio: 2, peso: 1 },
+  // };
 
-const solList = [
-  {
-    name: "gafas",
-    peso: 2,
-    espacio: 2,
-  },
-  {
-    name: "bloqueador",
-    peso: 1,
-    espacio: 1,
-  },
-];
-
-const lluviaList = [
-  {
-    name: "sombrilla",
-    peso: 2,
-    espacio: 1,
-  },
-  {
-    name: "botas",
-    peso: 3,
-    espacio: 2,
-  },
-];
-
-// Funciones que piden al usuario el ingreso de los datos
-alert("Bienvenido a la maleta de Julian");
-const addClima = () => prompt("Ingrese el clima esperado (sol-lluvia)");
-const addSuitcaseSpace = () =>
-  parseInt(prompt("Ingrese espacio disponible en la maleta"));
-const addSuitcaseWeight = () =>
-  parseInt(prompt("Ingrese el peso permitido de la maleta"));
-
-// Funcion principal
-function main() {
-  let clima = addClima();
-  let space = addSuitcaseSpace();
-  let weight = addSuitcaseWeight();
-
-// Condicionales con el clima
-  if (clima.toLowerCase() === "sol") {
-    let climaOption = prompt(
-      "Elige entre  lo siguiente: 1.Gafas - 2.Bloqueador"
-    );
-    if (climaOption === "1") {
-      suitcase.push(solList[0]);
-      console.log(`Has agregado ${solList[0].name} a tu maleta.`);
-    } else if (climaOption === "2") {
-      suitcase.push(solList[1]);
-      console.log(`Has agregado ${solList[1].name} a tu maleta.`);
-    }
-    console.log("Los items en tu maleta son:");
-    for (let item of suitcase) {
-      console.log(item);
+  // Si el pronóstico indica lluvia, Julian considerará llevar un paraguas.
+  if (clima === 'lluvia') {
+    if (espacio > 0 && peso >= 0.5) {
+      articulos.push('paraguas');
+      espacio -= 1;
+      peso -= 0.5;
     }
   }
-// Condicionales con el espacio
-  if (space > 1) {
-     
-   }
 
-// Condicionales con el peso
+  // Si Julian tiene espacio adicional y el peso de su equipaje lo permite, podría decidir llevar una cámara.
+  if (espacio > 0 && peso >= 1) {
+    articulos.push('cámara');
+    espacio -= 1;
+    peso -= 1;
+  }
+
+  // Priorización de Artículos
+  if (espacio > 0 && peso >= 1) {
+    if (clima === 'soleado') {
+      articulos.push('sombrero');
+    } else if (clima === 'frío') {
+      articulos.push('bufanda');
+    }
+  }
+  // Bucle para agregar más artículos
+  // while (flag) {
+  //   console.log('Artículos adicionales disponibles:');
+  //   for (let articulo in articulosAdicionales) {
+  //     console.log(
+  //       `${articulo}: Espacio - ${articulosAdicionales[articulo].espacio}, Peso - ${articulosAdicionales[articulo].peso}`
+  //     );
+  //   }
+  //   let nuevoArticulo = prompt(
+  //     'Ingrese el nombre del artículo que desea agregar:'
+  //   );
+  //   let espacioArticulo = articulosAdicionales[nuevoArticulo].espacio;
+  //   let pesoArticulo = articulosAdicionales[nuevoArticulo].peso;
+  //   console.log(articulos);
+
+  //   if (espacio >= espacioArticulo && peso >= pesoArticulo) {
+  //     articulos.push(nuevoArticulo);
+  //     espacio -= espacioArticulo;
+  //     peso -= pesoArticulo;
+  //   } else if (espacio < espacioArticulo) {
+  //     alert(
+  //       'Considera otro artículo, este no puede ser adquirido porque no tienes espacio suficiente.'
+  //     );
+  //   } else if (peso < pesoArticulo) {
+  //     alert('La maleta está muy cargada.');
+  //   }
+
+  //   flag = confirm('¿Deseas agregar otro artículo?');
+  // }
+
+  return articulos;
 }
-main();
+
+// Pedida de datos al usuario y verificacion
+let clima = prompt('Ingrese el clima esperado (lluvia, soleado, frío):');
+while (!['lluvia', 'soleado', 'frío'].includes(clima)) {
+  clima = prompt(
+    "Entrada inválida. Por favor, ingrese 'lluvia', 'soleado' o 'frío':"
+  );
+}
+
+let espacio = prompt('Ingrese el espacio disponible en la maleta (0-100):');
+while (isNaN(espacio) || espacio < 0 || espacio > 10) {
+  espacio = prompt(
+    'Entrada inválida. Por favor, ingrese un número válido para el espacio (0-100):'
+  );
+}
+
+let peso = prompt('Ingrese el peso total permitido (0-50 kg):');
+while (isNaN(peso) || peso < 0 || peso > 20) {
+  peso = prompt(
+    'Entrada inválida. Por favor, ingrese un número válido para el peso (0-50 kg):'
+  );
+}
+
+let articulos = decisionesUltimaHora(clima, espacio, peso);
+alert(`Artículos empacados: ${articulos}`);
